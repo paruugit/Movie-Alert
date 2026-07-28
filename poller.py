@@ -135,15 +135,16 @@ def fetch(cfg):
         api_url = "https://api.scraperapi.com/?" + urllib.parse.urlencode(
             {"api_key": scraper_key, "country_code": "in", "url": cfg["target_url"]}
         )
-       resp = requests.get(api_url, timeout=90)
 
-if not resp.ok:
-    print("ScraperAPI response:")
-    print(resp.status_code)
-    print(resp.text)
+        resp = requests.get(api_url, timeout=90)
 
-resp.raise_for_status()
-return resp.text
+        if not resp.ok:
+            print("=== ScraperAPI response ===")
+            print(resp.status_code)
+            print(resp.text)
+
+        resp.raise_for_status()
+        return resp.text
 
     proxy = os.environ.get("PROXY_URL")
     proxies = {"http": proxy, "https": proxy} if proxy else None
