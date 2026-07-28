@@ -110,10 +110,10 @@ def send_telegram(token, chat_id, text):
         timeout=30,
     )
     if not resp.ok:
-    print("Telegram response:")
-    print(resp.text)
+        print("Telegram response:")
+        print(resp.text)
 
-resp.raise_for_status()
+    resp.raise_for_status()
 
 
 def fetch(cfg):
