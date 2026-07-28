@@ -131,7 +131,8 @@ def fetch(cfg):
     headers.update(cfg.get("headers", {}))
 
     scraper_key = os.environ.get("SCRAPERAPI_KEY")
-    print("SCRAPERAPI_KEY exists:", bool(scraper_key))
+    print("SCRAPERAPI_KEY present?", scraper_key is not None)
+    print("SCRAPERAPI_KEY length:", len(scraper_key) if scraper_key else 0)
     if scraper_key:
         api_url = "https://api.scraperapi.com/?" + urllib.parse.urlencode(
             {"api_key": scraper_key, "country_code": "in", "url": cfg["target_url"]}
