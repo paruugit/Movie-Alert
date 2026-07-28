@@ -109,7 +109,11 @@ def send_telegram(token, chat_id, text):
         json={"chat_id": chat_id, "text": text, "disable_web_page_preview": False},
         timeout=30,
     )
-    resp.raise_for_status()
+    if not resp.ok:
+    print("Telegram response:")
+    print(resp.text)
+
+resp.raise_for_status()
 
 
 def fetch(cfg):
