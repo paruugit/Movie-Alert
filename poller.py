@@ -276,7 +276,7 @@ def main():
     available = is_available(page, cfg)
     print(f"[{label}] available={available} (was {state.get('available')})")
 
-    if available and not state.get("available"):
+    if True:
         if cfg.get("detector") in ("bms_date", "venue_date"):
             rd = cfg["requested_date"]
             pretty = f"{rd[6:8]}-{rd[4:6]}-{rd[0:4]}"
